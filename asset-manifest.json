@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/designYourCake/static/css/main.5f361e03.chunk.css",
+    "main.js": "/designYourCake/static/js/main.9c22223f.chunk.js",
+    "main.js.map": "/designYourCake/static/js/main.9c22223f.chunk.js.map",
+    "runtime-main.js": "/designYourCake/static/js/runtime-main.2363d87f.js",
+    "runtime-main.js.map": "/designYourCake/static/js/runtime-main.2363d87f.js.map",
+    "static/js/2.fd6db3ea.chunk.js": "/designYourCake/static/js/2.fd6db3ea.chunk.js",
+    "static/js/2.fd6db3ea.chunk.js.map": "/designYourCake/static/js/2.fd6db3ea.chunk.js.map",
+    "index.html": "/designYourCake/index.html",
+    "precache-manifest.b19358cb578109fdf9992083864aca57.js": "/designYourCake/precache-manifest.b19358cb578109fdf9992083864aca57.js",
+    "service-worker.js": "/designYourCake/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/designYourCake/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.fd6db3ea.chunk.js.LICENSE.txt": "/designYourCake/static/js/2.fd6db3ea.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/designYourCake/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2363d87f.js",
+    "static/js/2.fd6db3ea.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.9c22223f.chunk.js"
+  ]
+}
