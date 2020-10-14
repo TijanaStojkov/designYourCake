@@ -4,9 +4,31 @@ import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+//redux
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import cakeReducer from './store/reducers/cakeReducer';
+
+const rootReducer = combineReducers({
+  cakeReducer: cakeReducer
+})
+const logger = store => {
+  return next => {
+    return action => {
+      console.log('[Middleware] Dispaching', action) 
+      const result = next(action);
+      console.log('[Middleware] next state', store.getState()) 
+      return result
+    }
+  }
+}
+const store = createStore(rootReducer, applyMiddleware(logger))
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

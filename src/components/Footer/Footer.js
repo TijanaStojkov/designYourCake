@@ -2,6 +2,8 @@ import React from 'react';
 import './Footer.scss';
 
 import { Footer } from 'react-materialize';
+
+//images
 import instagram from '../../assets/images/icons/instagram.png';
 import linkedin from '../../assets/images/icons/linkedin.png';
 import facebook from '../../assets/images/icons/facebook.png';

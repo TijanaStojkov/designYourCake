@@ -1,13 +1,17 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './Steps.scss';
 
 import { Checkbox, Textarea } from 'react-materialize';
 
-const step2 = () => {
-    return (
-        <div >
+//redux
+import { connect } from 'react-redux';
+
+class Step2 extends Component{
+    render(){
+        return(
+            <div >
             <div className='container'>
-                <h5>Coose decorations</h5>
+                <h5>Coose decorations {this.props.layers}</h5>
                 <div className='row'>
                     <div className='col s12'>
                         <Checkbox id="customMessage" label="Custom Message +$10.00" value="customMessage" />
@@ -38,7 +42,14 @@ const step2 = () => {
                     />
                     </div> 
                 </div>
-            </div>
-    )
+            </div> 
+        )
+    }
 }
-export default step2;
+
+const mapStateToProps = state =>{
+    return{
+        layers: state.cakeReducer.layers
+    }
+}
+export default connect(mapStateToProps)(Step2);

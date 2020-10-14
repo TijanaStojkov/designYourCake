@@ -12,7 +12,7 @@ import { Button } from 'react-materialize';
 
 class Form extends Component{
     state = {
-        step: 4,
+        step: 1,
     }
     addStepHandler = () => {
         this.setState({
