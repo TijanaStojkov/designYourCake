@@ -3,7 +3,7 @@ import './Form.scss';
 
 //components
 import Aux from '../../hoc/Auxilary/Auxilary';
-import Step1 from './Steps/Step1';
+import Step1 from './Steps/Step1/Step1';
 import Step2 from './Steps/Step2';
 import Step3 from './Steps/Step3';
 import Summary from './Steps/Summary/Summary';

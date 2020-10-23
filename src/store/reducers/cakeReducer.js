@@ -7,11 +7,12 @@ const initState = {
     }
 }
 
-const cakeReducer=(state=initState, actions)=>{
+const cakeReducer = (state=initState, actions) => {
     switch(actions.type){
         case actionTypes.CHANGE_LAYERS_HANDLER:
             return updateObject(state, {cake: updateObject(state.cake, {layers: actions.layers})})
+        default:
+            return state
     }
-    return state
 }
 export default cakeReducer;
