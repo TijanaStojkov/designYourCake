@@ -1,0 +1,12 @@
+
+.axis-baseline {
+    stroke: #AFAFAF;
+    stroke-width: 1px;
+    stroke-linecap: butt;
+}
+.frame {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 30px;
+    color:#000
+}

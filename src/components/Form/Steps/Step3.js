@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import './Steps.scss';
 
 import { Checkbox, Textarea } from 'react-materialize';
 

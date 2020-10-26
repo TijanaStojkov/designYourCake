@@ -7,7 +7,7 @@ import Step1 from './Steps/Step1/Step1';
 import Step2 from './Steps/Step2';
 import Step3 from './Steps/Step3';
 import Summary from './Steps/Summary/Summary';
-import ProgressBar from '../ProgressBar/ProgressBar';
+import ProgressBar from './ProgressBar/ProgressBar';
 import { Button } from 'react-materialize';
 
 class Form extends Component{
@@ -43,14 +43,14 @@ class Form extends Component{
     render() {
         return(
             <Aux >
-                
-                <form onSubmit={this.handleSubmitForm}>
-                    <ProgressBar/>
+                <form onSubmit={this.handleSubmitForm} >
+                    <ProgressBar step={this.state.step}/>
                     {this.currentStep()}
                 </form>
-                <Button className='brown darken-4 btn-prev' onClick={this.removeStepHandler}>Previous</Button>
-                <Button className='brown darken-4 btn-next' onClick={this.addStepHandler} >Next</Button>
-
+                <div className='row'>
+                    <Button className='brown darken-4 btn-prev' onClick={this.removeStepHandler}>Previous</Button>
+                    <Button className='brown darken-4 btn-next' onClick={this.addStepHandler} >Next</Button>
+                </div>
             </Aux>
         )
     }

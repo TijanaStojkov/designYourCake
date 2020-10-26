@@ -5,7 +5,8 @@ import Aux from '../../hoc/Auxilary/Auxilary';
 import NavBar from '../NavBar/NavBar';
 import Form from '../Form/From';
 import Cake from '../Cake/Cake';
-import Footer from '../Footer/Footer'
+import Footer from '../Footer/Footer';
+import Waterfall from '../Waterfall/Waterfall';
 
 const layout = () => {
   return (
@@ -18,6 +19,9 @@ const layout = () => {
           <div className="col l5 m12" >
             <Cake />
           </div>
+        </div>
+        <div className="row" style={{display:'flex', justifyContent: 'center'}}>
+          <Waterfall />
         </div>
       <Footer/>
     </Aux>

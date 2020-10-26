@@ -6,7 +6,7 @@ import 'materialize-css'; // It installs the JS asset only
 import 'materialize-css/dist/css/materialize.min.css';
 
 //components
-import Aux from '../src/hoc/Auxilary/Auxilary';
+import Aux from './hoc/Auxilary/Auxilary';
 import Layout from '../src/components/Layout/Layout';
 
 const app = () => {

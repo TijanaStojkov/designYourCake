@@ -1,5 +1,4 @@
 import React from 'react';
-import './Steps.scss';
 
 //images
 import spangeRed from '../../../assets/images/cake-spange/spange-red.jpg';

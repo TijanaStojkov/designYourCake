@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Steps.scss'
+import './Step1.scss'
 
 //images
 import round1 from '../../../../assets/images/cakes-shape/round1.png';
@@ -13,7 +13,9 @@ import rectangular3 from '../../../../assets/images/cakes-shape/rectangular3.png
 import { connect } from 'react-redux';
 import * as actions from '../../../../store/actions/allActions';
 
+//transition
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import '../../../../assets/scss/transition.scss';
 
 class Step1 extends Component {
     state = {
@@ -26,7 +28,6 @@ class Step1 extends Component {
        })
     }
     render(){
-        
         let selectedRectangularClass = ['img-shape'];
         let selectedRoundClass = ['img-shape'];
         switch (this.state.selected){
@@ -36,9 +37,8 @@ class Step1 extends Component {
             case 'round':
                 selectedRoundClass.push('border')
                 break;
-            
-                default:
-                break
+            default:
+                break;
         }
         let re1LayerStyle = ['img-shape'];
         let re2LayerStyle = ['img-shape'];
@@ -72,7 +72,7 @@ class Step1 extends Component {
         let selectedRow = null;
         if(this.state.selected==='rectangular'){
             selectedRow=
-            <div className='row'>
+            <div className='row' style={{position:'absolute',minWidth: '500px'}}>
                 <div className='col s4'>
                     <img className={re1LayerStyle.join(' ')} src={rectangular1} alt={'rectangular1'} onClick={()=>this.props.changeLayersHandler('rectangular-one')}/>
                     <p>10-12 pepole (40$)</p>
@@ -88,7 +88,7 @@ class Step1 extends Component {
             </div>
         }else if(this.state.selected==='round'){
             selectedRow=
-                <div className='row'>
+                <div className='row' style={{position:'absolute',minWidth: '500px'}}>
                     <div className='col s4'>
                         <img className={ro1LayerStyle.join(' ')} src={round1} alt={'round1'} onClick={()=>this.props.changeLayersHandler('round-one')}/>
                         <p>10-12 pepole (40$)</p>
@@ -111,13 +111,14 @@ class Step1 extends Component {
                         <img className={selectedRectangularClass.join(' ')} src={rectangular1} alt={'rectangular1'} onClick={(event)=>this.selectedHandler(event,'rectangular')}/>
                         <img className={selectedRoundClass.join(' ')} src={round1} alt={'round1'} onClick={(event)=>this.selectedHandler(event,'round')}/>
                     </div>
-                    <div className='row'>
+                    <div className='row' style={{position:'relative'}}>
                         <h5>Coose number of layers</h5>
-                        <TransitionGroup className="transition-group">
+                        <TransitionGroup >
                             <CSSTransition
-                            key={this.state.selected}
-                            timeout={{ enter: 600, exit: 600 }}
-                            classNames="fade">
+                                key={this.state.selected}
+                                timeout={300}
+                                classNames="fade"
+                            >
                                  {selectedRow}
                             </CSSTransition>
                         </TransitionGroup>
