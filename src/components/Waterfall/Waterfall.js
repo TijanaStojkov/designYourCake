@@ -1,13 +1,13 @@
 import OrdinalFrame from "semiotic/lib/OrdinalFrame"
-import React from 'react';
-import './Waterfall.css';
-import {useStore} from "react-redux";
-
+import React, { useState, useEffect } from 'react';import './Waterfall.css';
+import { useSelector } from 'react-redux'
 const Graph = () => {
-    const store = useStore();
-
-    const layersPrice = Number(store.getState().cakeReducer.cake.layersPrice);
-    const nesto = Number(store.getState().cakeReducer.cake.nesto);
+    const store = useSelector((state)=>state)
+    useEffect(() => {
+        console.log('Waterfall')      
+    });
+    const layersPrice = Number(store.cakeReducer.cake.layersPrice);
+    const nesto = Number(store.cakeReducer.cake.nesto);
 
     /*calculation for min and max y axis */
     const valueArray=[
@@ -34,11 +34,10 @@ const Graph = () => {
     }
     const frameProps = {   
         data: [
-            { name: "layersPrice", value: layersPrice },
-            { name: "nesto", value: nesto },
-            { name: "Total price" }
+            { name: "layersPrice", value: layersPrice, idText:1, idLine:11, idRect:111},
+            { name: "nesto", value: nesto, idText:2, idLine:22, idRect:222 },
+            { name: "Total price", idText:3, idLine:33, idRect:333 }
             ],
-
         size: [900,300],
         margin: { left: 50, top: 70, bottom: 50, right: 70 },
         type: waterfall,
@@ -121,21 +120,25 @@ const Graph = () => {
 
             renderedPieces.push(markObject);
 
-            markObject.renderElement.children.push(
+            const vizPieces = [];
+
+                vizPieces.push(
                 <rect
+                    key={thisPiece.idRect}
                     fill='#80CFEF'
                     height={barHeight(thisPiece, height)}
                     x={x}
                     y={y}
                     width={width}
                     style={{ fill: fillRule(thisPiece) }}
-                ><title>There's some text</title></rect>
+                ></rect>
             );
             const lineY = name === "Total price" || value > 0 ? y : y + Math.abs(height);
             //line style
             if (name !== "Total price") {
-                markObject.renderElement.children.push(
+                vizPieces.push(
                     <line
+                        key={thisPiece.idLine}
                         x1={x + width}
                         x2={x + width + frameProps.oPadding}
                         y1={lineY}
@@ -147,8 +150,9 @@ const Graph = () => {
             //position labels
             const textOffset = name === "Total price" || value > 0 ? -15 : 20;
             //labels style
-            markObject.renderElement.children.push(
+            vizPieces.push(
                 <text
+                    key={thisPiece.idText}
                     x={x + width / 2}
                     y={lineY + textOffset}
                     style={{ fontSize: "14px", lineHeight:"30px", textAnchor: "middle", fill: "#757575" }}
@@ -156,6 +160,8 @@ const Graph = () => {
                     {formatLabel(name, value)}
                 </text>
             );
+            markObject.renderElement = <g key={thisPiece.name}>{vizPieces}</g>;
+
             currentY -= height
         });
         return renderedPieces

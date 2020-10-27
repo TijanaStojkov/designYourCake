@@ -5,9 +5,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 //redux
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import cakeReducer from './store/reducers/cakeReducer';
+import thunk from 'redux-thunk';
+
 
 const rootReducer = combineReducers({
   cakeReducer: cakeReducer
@@ -22,7 +24,8 @@ const logger = store => {
     }
   }
 }
-const store = createStore(rootReducer, applyMiddleware(logger))
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger, thunk)))
 
 ReactDOM.render(
     <Provider store={store}>
