@@ -1,4 +1,5 @@
 import React from 'react';
+import './ProgressBar.scss';
 
 const progressBar = (props) => {
     const step = props.step;
@@ -6,7 +7,7 @@ const progressBar = (props) => {
     return (
         <div className='container'>
             <div className='row' style={{borderRadius: '10px', border: '1px solid #430505' }}>
-                <div className="determinate purple accent-2 white-text" style={{width: progres}}>{progres}</div>				
+                <div className="determinate purple accent-2 white-text bar" style={{width: progres}}>{progres}</div>				
             </div>
         </div>
     )

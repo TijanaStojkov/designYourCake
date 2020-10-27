@@ -39,8 +39,8 @@ const Graph = () => {
             { name: "Total price" }
             ],
 
-        size: [800,630],
-        margin: { left: 50, top: 70, bottom: 250, right: 70 },
+        size: [900,300],
+        margin: { left: 50, top: 70, bottom: 50, right: 70 },
         type: waterfall,
         oPadding: 32,
         oAccessor: "name",
@@ -52,8 +52,13 @@ const Graph = () => {
               stroke:'#AFAFAF'},
             { ticks:1, tickValues:[0],  orient: "left", stroke:'#AFAFAF' },
         ],
+        oLabel: d => {
+            const abel = d!='Total price'?
+            <text style={{ fontSize: '12px', lineHeight:'19px', fill:'#000', textAnchor: "middle"}}>{d}</text>:
+            <text style={{ fontWeight:'bold', fontSize: '12px', lineHeight:'19px', fill:'#000', textAnchor: "middle"}}>{d}</text>
 
-        oLabel: d => <text style={{ fontSize: '12px', lineHeight:'19px', fill:'#000', textAnchor: "middle"}}>{d}</text>,
+            return abel
+        },
         
     };
 
@@ -146,7 +151,7 @@ const Graph = () => {
                 <text
                     x={x + width / 2}
                     y={lineY + textOffset}
-                    style={{ fontSize: "16px", lineHeight:"30px", textAnchor: "middle", fill: "#757575" }}
+                    style={{ fontSize: "14px", lineHeight:"30px", textAnchor: "middle", fill: "#757575" }}
                 >
                     {formatLabel(name, value)}
                 </text>
