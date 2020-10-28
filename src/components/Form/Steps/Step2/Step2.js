@@ -87,6 +87,7 @@ const step2 = (props) => {
             imageSrc = {cake.icing[key].imageSrc}
             imageAlt = {key}
             imageParagraf = {cake.icing[key].imageParagraf}
+            imageOnClick = {()=>props.changeIcingHandler(key)}
         />
     ))
     return (

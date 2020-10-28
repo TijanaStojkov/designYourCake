@@ -10,15 +10,27 @@ import { connect } from 'react-redux';
 class cake extends React.Component{
 
     render(){
-        let styleCake = ['cake', 'cakeRedSpangeBlueIcing'].join(' ')
         let numberOfLayers = this.props.layers.split('-')[1];
+        let styleCake = `cake 
+            ${this.props.spange==='spangeRed'?' cakeRedSpange':
+            this.props.spange==='spangeBrown'?' cakeBrownSpange':
+            this.props.spange==='spangeYellow'?' cakeYellowSpange':' '}
+            
+            ${this.props.icing==='icingBlue'?' icingBlue':
+            this.props.icing==='icingRed'?' icingRed':
+            this.props.icing==='icingGreen'?' icingGreen':
+            this.props.icing==='icingGray'?' icingGray':
+            this.props.icing==='icingYellow'?' icingYellow':
+            this.props.icing==='icingOrange'?' icingOrange':' '}
+            `
         let layers = null;
         if(numberOfLayers ==='one'){
             layers = <section className={styleCake } id="cake--bottom"></section>
         }else if(numberOfLayers ==='two'){
             layers = 
                 <div>
-                    <section className={styleCake } id="cake--middle"></section>
+                    <section 
+                        className={styleCake } id="cake--middle"></section>
                     <section className={styleCake } id="cake--bottom"></section>
                 </div>
         }else if(numberOfLayers ==='tree'){
@@ -47,7 +59,10 @@ class cake extends React.Component{
 }
 const mapStateToProps = state => {
     return{
-        layers: state.cakeReducer.cake.layers
+        layers: state.cakeReducer.cake.layers,
+        spange: state.cakeReducer.cake.spange,
+        icing: state.cakeReducer.cake.icing
+
     }
 }
 export default connect(mapStateToProps)(cake);

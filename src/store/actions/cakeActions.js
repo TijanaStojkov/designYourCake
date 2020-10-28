@@ -12,3 +12,9 @@ export const changeSpangeHandler = (spange) => {
         spange
     }
 }
+export const changeIcingHandler = (icing) => {
+    return{
+        type: actionTypes.CHANGE_ICING_HANDLER,
+        icing
+    }
+}

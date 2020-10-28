@@ -46,6 +46,7 @@ class Form extends Component{
                             key={2}
                             spange={this.props.spange}
                             changeSpangeHandler={this.props.changeSpangeHandler}
+                            changeIcingHandler={this.props.changeIcingHandler}
                             />
             case 3:
                 return <Step3 key={3}/>
@@ -82,12 +83,15 @@ const mapStateToProps = state => {
     return{
         layers: state.cakeReducer.cake.layers,
         spange: state.cakeReducer.cake.spange,
+        icing: state.cakeReducer.cake.icing,
+
     }
 }
 const mapDispatchToProps = dispatch => {
     return {
         changeLayersHandler: (layers) => dispatch (actions.changeLayersHandler(layers)),
-        changeSpangeHandler: (spange) => dispatch(actions.changeSpangeHandler(spange))
+        changeSpangeHandler: (spange) => dispatch(actions.changeSpangeHandler(spange)),
+        changeIcingHandler: (icing) => dispatch(actions.changeIcingHandler(icing))
     }
 }    
 export default connect(mapStateToProps,mapDispatchToProps)(Form);

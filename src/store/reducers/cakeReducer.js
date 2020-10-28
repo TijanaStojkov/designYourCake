@@ -6,8 +6,9 @@ const initState = {
     cake: {
         layers: 'rectangular-one',
         layersPrice: 40,
-        nesto:30,
-        spange:'spangeRed',
+        nesto: 30,
+        spange: 'spangeRed',
+        icing: 'icingBlue',
     },
     totalPrice: null
 }
@@ -18,6 +19,8 @@ const cakeReducer = (state=initState, actions) => {
             return updateObject(state, {cake: updateObject(state.cake, {layers: actions.layers, layersPrice: LAYERS_PRICE[actions.layers]})})
         case actionTypes.CHANGE_SPANGE_HANDLER:
             return updateObject(state, {cake: updateObject(state.cake, {spange: actions.spange})})
+        case actionTypes.CHANGE_ICING_HANDLER:
+            return updateObject(state, {cake: updateObject(state.cake, {icing: actions.icing})})
         default:
             return state
     }
