@@ -4,15 +4,21 @@ import './Form.scss';
 //components
 import Aux from '../../hoc/Auxilary/Auxilary';
 import Step1 from './Steps/Step1/Step1';
-import Step2 from './Steps/Step2';
-import Step3 from './Steps/Step3';
+import Step2 from './Steps/Step2/Step2';
+import Step3 from './Steps/Step3/Step3';
 import Summary from './Steps/Summary/Summary';
 import ProgressBar from './ProgressBar/ProgressBar';
 import { Button } from 'react-materialize';
 
+//redux
+import { connect } from 'react-redux';
+import * as actions from '../../store/actions/allActions';
+
 class Form extends Component{
     state = {
-        step: 1,
+        step: 2,
+        //Step1
+        selected: 'rectangular',
     }
     addStepHandler = () => {
         this.setState({
@@ -29,7 +35,12 @@ class Form extends Component{
     currentStep(){
         switch(this.state.step){
             case 1:
-                return <Step1 key={1}/>
+                return <Step1 
+                            key={1} 
+                            selected={this.state.selected} 
+                            layers={this.props.layers}
+                            selectedHandler={this.selectedHandler} 
+                            changeLayersHandler = {this.props.changeLayersHandler}/>
             case 2:
                 return <Step2 key={2}/>
             case 3:
@@ -40,6 +51,14 @@ class Form extends Component{
                 return <Step1 key={1}/>
         }
     }
+    //Step1
+
+    selectedHandler = (event, selected) => {
+        event.preventDefault()
+        this.setState({
+            selected: selected,
+        })
+     }
     render() {
         return(
             <Aux >
@@ -55,4 +74,14 @@ class Form extends Component{
         )
     }
 }
-export default Form;
+const mapStateToProps = state => {
+    return{
+        layers: state.cakeReducer.cake.layers,
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        changeLayersHandler: (layers) => dispatch (actions.changeLayersHandler(layers))
+    }
+}    
+export default connect(mapStateToProps,mapDispatchToProps)(Form);
