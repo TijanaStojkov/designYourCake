@@ -8,40 +8,82 @@ import { IMAGES } from '../../../../const/images';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import '../../../../assets/scss/transition.scss';
 
-const Step1 = (props) => {
+//components
+import ImageDiv from '../Parts/ImageDiv';
 
+const Step1 = (props) => {
+        let layers = {
+            rectangular: {
+                'rectangular-one': {
+                    divSize: 's4',
+                    imageSrc: `${IMAGES.rectangular1}`,
+                    imageAlt: 'rectangular1',
+                    imageParagraf: '10-12 pepole (40$)'
+                },
+                'rectangular-two': {
+                    divSize: 's4',
+                    imageSrc: `${IMAGES.rectangular2}`,
+                    imageAlt: 'rectangular2',
+                    imageParagraf: '20-24 pepole (80$)'
+                },
+                'rectangular-tree': {
+                    divSize: 's4',
+                    imageSrc: `${IMAGES.rectangular3}`,
+                    imageAlt: 'rectangular3',
+                    imageParagraf: '30-38 pepole (125$)'
+                }
+            },
+            round: {
+                'round-one': {
+                    divSize: 's4',
+                    imageSrc: `${IMAGES.round1}`,
+                    imageAlt: 'round1',
+                    imageParagraf: '10-12 pepole (40$)'
+                },
+                'round-two': {
+                    divSize: 's4',
+                    imageSrc: `${IMAGES.round2}`,
+                    imageAlt: 'round2',
+                    imageParagraf: '20-24 pepole (80$)'
+                },
+                'round-tree': {
+                    divSize: 's4',
+                    imageSrc: `${IMAGES.round3}`,
+                    imageAlt: 'round3',
+                    imageParagraf: '30-38 pepole (125$)'
+                }
+            }
+        }
         let selectedRow = null;
         if(props.selected==='rectangular'){
-            selectedRow=
-            <div className='row' style={{position:'absolute',minWidth: '500px'}}>
-                <div className='col s4'>
-                    <img className={`img-shape ${props.layers==='rectangular-one'?'border':''}`} src={IMAGES.rectangular1} alt={'rectangular1'} onClick={()=>props.changeLayersHandler('rectangular-one')}/>
-                    <p>10-12 pepole (40$)</p>
-                </div>
-                <div className='col s4'>
-                    <img className={`img-shape ${props.layers==='rectangular-two'?'border':''}`} src={IMAGES.rectangular2} alt={'rectangular2'} onClick={()=>props.changeLayersHandler('rectangular-two')}/>
-                    <p>20-24 pepole (80$)</p>
-                </div>
-                <div className='col s4'>
-                    <img className={`img-shape ${props.layers==='rectangular-tree'?'border':''}`} src={IMAGES.rectangular3} alt={'rectangular3'} onClick={()=>props.changeLayersHandler('rectangular-tree')}/>                                
-                    <p>30-38 pepole (125$)</p>
-                </div>
-            </div>
-        }else if(props.selected==='round'){
-            selectedRow=
+            selectedRow =
                 <div className='row' style={{position:'absolute',minWidth: '500px'}}>
-                    <div className='col s4'>
-                        <img className={`img-shape ${props.layers==='round-one'?'border':''}`} src={IMAGES.round1} alt={'round1'} onClick={()=>props.changeLayersHandler('round-one')}/>
-                        <p>10-12 pepole (40$)</p>
-                    </div>
-                    <div className='col s4'>
-                        <img className={`img-shape ${props.layers==='round-two'?'border':''}`} src={IMAGES.round2} alt={'round2'} onClick={()=>props.changeLayersHandler('round-two')}/>
-                        <p>20-24 pepole (80$)</p>
-                    </div>
-                    <div className='col s4'>
-                        <img className={`img-shape ${props.layers==='round-tree'?'border':''}`} src={IMAGES.round3} alt={'round3'} onClick={()=>props.changeLayersHandler('round-tree')}/>
-                        <p>30-38 pepole (125$)</p>
-                    </div>
+                    {Object.keys(layers.rectangular).map(key=>(
+                        <ImageDiv
+                            key = {key}
+                            divSize = {layers.rectangular[key].divSize}
+                            imageClass = {`img-shape ${props.layers===key?'border':''}`}
+                            imageSrc = {layers.rectangular[key].imageSrc}
+                            imageAlt = {layers.rectangular[key].imageAlt}
+                            imageOnClick= {()=>props.changeLayersHandler(key)}
+                            imageParagraf = {layers.rectangular[key].imageParagraf}
+                        />
+                        ))}
+                </div>
+        }else if(props.selected==='round'){
+            selectedRow =
+                <div className='row' style={{position:'absolute',minWidth: '500px'}}>
+                   {Object.keys(layers.round).map(key=>(
+                    <ImageDiv
+                        key = {key}
+                        divSize = {layers.round[key].divSize}
+                        imageClass = {`img-shape ${props.layers===key?'border':''}`}
+                        imageSrc = {layers.round[key].imageSrc}
+                        imageAlt = {layers.round[key].imageAlt}
+                        imageOnClick= {()=>props.changeLayersHandler(key)}
+                        imageParagraf = {layers.round[key].imageParagraf}
+                    />
+                    ))}
                 </div>
         }
         return (
