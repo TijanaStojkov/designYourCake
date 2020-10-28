@@ -1,3 +1,4 @@
 export {
-    changeLayersHandler
+    changeLayersHandler,
+    changeSpangeHandler,
 } from './cakeActions';

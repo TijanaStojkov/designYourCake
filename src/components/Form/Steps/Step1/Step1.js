@@ -87,7 +87,7 @@ const Step1 = (props) => {
                 </div>
         }
         return (
-            <div  >
+            <div className='Step1'>
                 <div className='container'>
                     <h5>Coose cake shape</h5>
                     <div className='row' >

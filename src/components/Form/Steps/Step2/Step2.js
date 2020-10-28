@@ -1,4 +1,5 @@
 import React from 'react';
+import './Step2.scss'
 
 //images
 import { IMAGES }from '../../../../const/images';
@@ -6,7 +7,7 @@ import { IMAGES }from '../../../../const/images';
 //components
 import ImageDiv from '../Parts/ImageDiv';
 
-const step2 = () => {
+const step2 = (props) => {
     let cake = {
         spange: {
             'spangeRed': {
@@ -71,24 +72,25 @@ const step2 = () => {
         <ImageDiv
             key = {key}
             divSize = {cake.spange[key].divSize}
-            imageClass = {cake.spange[key].imageClass}
+            imageClass = {`img-spange ${props.spange===key?'border padding5':' '}`}
             imageSrc = {cake.spange[key].imageSrc}
             imageAlt = {key}
             imageParagraf = {cake.spange[key].imageParagraf}
+            imageOnClick = {()=>props.changeSpangeHandler(key)}
         />
     ))
     const icing = Object.keys(cake.icing).map(key=>(
         <ImageDiv
             key = {key}
             divSize = {cake.icing[key].divSize}
-            imageClass = {cake.icing[key].imageClass}
+            imageClass = {`img-icing ${props.spange===key?'border':' '}`}
             imageSrc = {cake.icing[key].imageSrc}
             imageAlt = {key}
             imageParagraf = {cake.icing[key].imageParagraf}
         />
     ))
     return (
-        <div>
+        <div className='Step2'>
             <div className='container'>
                 <div className='row'>
                     <h5>Coose cake spange</h5>

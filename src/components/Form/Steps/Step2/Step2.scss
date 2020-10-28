@@ -1,0 +1,19 @@
+@import '../../../../assets/scss/variables.scss';
+
+.Step2 {
+    .img-spange{
+        height: 90px;
+        width: auto;
+        margin-right: 10px;
+    }
+    .img-icing{
+        height: 60px;
+        width: auto;
+    }
+    .border{
+        border: 1px solid $main-color
+    }
+    .padding5{
+        padding: 5px
+    }
+}
