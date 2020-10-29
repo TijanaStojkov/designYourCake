@@ -16,7 +16,7 @@ import * as actions from '../../store/actions/allActions';
 
 class Form extends Component{
     state = {
-        step: 2,
+        step: 3,
         //Step1
         selected: 'rectangular',
     }
@@ -40,16 +40,25 @@ class Form extends Component{
                             selected={this.state.selected} 
                             layers={this.props.layers}
                             selectedHandler={this.selectedHandler} 
-                            changeLayersHandler = {this.props.changeLayersHandler}/>
+                            changeValueHandler = {this.props.changeValueHandler}/>
             case 2:
                 return <Step2 
                             key={2}
                             spange={this.props.spange}
                             changeSpangeHandler={this.props.changeSpangeHandler}
-                            changeIcingHandler={this.props.changeIcingHandler}
+                            changeValueHandler={this.props.changeValueHandler}
                             />
             case 3:
-                return <Step3 key={3}/>
+                return <Step3 
+                            key={3}
+                            changeValueHandler={this.props.changeValueHandler}
+                            customMessage={this.props.customMessage}
+                            flowers={this.props.flowers}
+                            ediblePearls={this.props.ediblePearls}
+                            strawberries={this.props.strawberries}
+                            candles={this.props.candles}
+                            fireworks={this.props.fireworks}
+                            />
             case 4:
                 return <Summary/>
             default:
@@ -84,14 +93,17 @@ const mapStateToProps = state => {
         layers: state.cakeReducer.cake.layers,
         spange: state.cakeReducer.cake.spange,
         icing: state.cakeReducer.cake.icing,
-
+        customMessage: state.cakeReducer.cake.customMessage,
+        flowers: state.cakeReducer.cake.flowers,
+        ediblePearls: state.cakeReducer.cake.ediblePearls,
+        strawberries: state.cakeReducer.cake.strawberries,
+        candles: state.cakeReducer.cake.candles,
+        fireworks: state.cakeReducer.cake.fireworks
     }
 }
 const mapDispatchToProps = dispatch => {
     return {
-        changeLayersHandler: (layers) => dispatch (actions.changeLayersHandler(layers)),
-        changeSpangeHandler: (spange) => dispatch(actions.changeSpangeHandler(spange)),
-        changeIcingHandler: (icing) => dispatch(actions.changeIcingHandler(icing))
+        changeValueHandler: (name, value) => dispatch (actions.changeValueHandler(name, value)),
     }
 }    
 export default connect(mapStateToProps,mapDispatchToProps)(Form);

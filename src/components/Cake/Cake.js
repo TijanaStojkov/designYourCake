@@ -41,15 +41,30 @@ class cake extends React.Component{
                     <section className={styleCake } id="cake--bottom"></section>
                 </div>
         }
+        let redFirework = null;
+        if(this.props.fireworks){
+            redFirework = <span className="firework"><img src={fireworkRed} alt={'fireworkRed'}/></span>
+        }
+        let blueFirework = null;
+        if(this.props.fireworks){
+            blueFirework = <span className="firework"><img src={fireworkBlue} alt={'fireworkBlue'}/></span>
+        }
+        let candles = null;
+        if(this.props.candles){
+            candles = 
+                <div>
+                    <span className="candle"><img src={redCandle} alt={'redCandle'}/></span>
+                    <span className="candle"><img src={redCandle} alt={'redCandle'}/></span>
+                    <span className="candle"><img src={redCandle} alt={'redCandle'}/></span>
+                </div>
+        }
         return(
             <section className="container">
             <section id="cake">
                 <section className="candles-top">
-                    <span className="firework"><img src={fireworkRed} alt={'fireworkRed'}/></span>
-                    <span className="candle"><img src={redCandle} alt={'redCandle'}/></span>
-                    <span className="candle"><img src={redCandle} alt={'redCandle'}/></span>
-                    <span className="candle"><img src={redCandle} alt={'redCandle'}/></span>
-                    <span className="firework"><img src={fireworkBlue} alt={'fireworkBlue'}/></span>
+                    {redFirework}
+                    {candles}
+                    {blueFirework}
                 </section>
                 {layers}
             </section>
@@ -61,8 +76,9 @@ const mapStateToProps = state => {
     return{
         layers: state.cakeReducer.cake.layers,
         spange: state.cakeReducer.cake.spange,
-        icing: state.cakeReducer.cake.icing
-
+        icing: state.cakeReducer.cake.icing,
+        candles: state.cakeReducer.cake.candles,
+        fireworks: state.cakeReducer.cake.fireworks,
     }
 }
 export default connect(mapStateToProps)(cake);

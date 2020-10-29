@@ -1,5 +1,3 @@
 export {
-    changeLayersHandler,
-    changeSpangeHandler,
-    changeIcingHandler,
+    changeValueHandler,
 } from './cakeActions';

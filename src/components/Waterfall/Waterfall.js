@@ -1,18 +1,30 @@
 import OrdinalFrame from "semiotic/lib/OrdinalFrame"
-import React, { useState, useEffect } from 'react';import './Waterfall.css';
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react';import './Waterfall.css';
+import { useSelector } from 'react-redux';
+import { CAKE_PRICES } from '../../const/cake-prices';
+
 const Graph = () => {
     const store = useSelector((state)=>state)
     useEffect(() => {
         console.log('Waterfall')      
     });
-    const layersPrice = Number(store.cakeReducer.cake.layersPrice);
-    const nesto = Number(store.cakeReducer.cake.nesto);
+    const layers = Number(CAKE_PRICES[store.cakeReducer.cake.layers]);
+    const customMessage = Number(store.cakeReducer.cake.customMessage===true?CAKE_PRICES['customMessage']:0);
+    const flowers = Number(store.cakeReducer.cake.flowers===true?CAKE_PRICES['flowers']:0);
+    const ediblePearls = Number(store.cakeReducer.cake.ediblePearls===true?CAKE_PRICES['ediblePearls']:0);
+    const strawberries = Number(store.cakeReducer.cake.strawberries===true?CAKE_PRICES['strawberries']:0);
+    const candles = Number(store.cakeReducer.cake.candles===true?CAKE_PRICES['candles']:0);
+    const fireworks = Number(store.cakeReducer.cake.fireworks===true?CAKE_PRICES['fireworks']:0);
 
     /*calculation for min and max y axis */
     const valueArray=[
-        layersPrice,
-        nesto
+        layers,
+        customMessage,
+        flowers,
+        ediblePearls,
+        strawberries,
+        candles,
+        fireworks,
         ];
     let zbir=valueArray[0];
     let min=0;
@@ -34,9 +46,14 @@ const Graph = () => {
     }
     const frameProps = {   
         data: [
-            { name: "layersPrice", value: layersPrice, idText:1, idLine:11, idRect:111},
-            { name: "nesto", value: nesto, idText:2, idLine:22, idRect:222 },
-            { name: "Total price", idText:3, idLine:33, idRect:333 }
+            { name: "Layers", value: layers, idText:1, idLine:11, idRect:111},
+            { name: "Custom Message", value: customMessage, idText:2, idLine:22, idRect:222 },
+            { name: "Flowers", value: flowers, idText:3, idLine:33, idRect:333 },
+            { name: "Edible Pearls", value: ediblePearls, idText:4, idLine:44, idRect:444 },
+            { name: "Strawberries", value: strawberries, idText:5, idLine:55, idRect:555 },
+            { name: "Candles", value: candles, idText:6, idLine:66, idRect:666 },
+            { name: "Fireworks", value: fireworks, idText:7, idLine:77, idRect:777 },
+            { name: "Total price", idText:8, idLine:88, idRect:888 }
             ],
         size: [900,300],
         margin: { left: 50, top: 70, bottom: 50, right: 70 },
@@ -44,7 +61,7 @@ const Graph = () => {
         oPadding: 32,
         oAccessor: "name",
         rAccessor: "value",
-        rExtent: [0,400],
+        rExtent: [0,300],
         axes: [
             { tickSize:0, 
               orient: "left", 
@@ -148,7 +165,7 @@ const Graph = () => {
                 )
             }
             //position labels
-            const textOffset = name === "Total price" || value > 0 ? -15 : 20;
+            const textOffset = -15;
             //labels style
             vizPieces.push(
                 <text

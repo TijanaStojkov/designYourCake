@@ -76,7 +76,7 @@ const step2 = (props) => {
             imageSrc = {cake.spange[key].imageSrc}
             imageAlt = {key}
             imageParagraf = {cake.spange[key].imageParagraf}
-            imageOnClick = {()=>props.changeSpangeHandler(key)}
+            imageOnClick = {()=>props.changeValueHandler('spange', key)}
         />
     ))
     const icing = Object.keys(cake.icing).map(key=>(
@@ -87,7 +87,7 @@ const step2 = (props) => {
             imageSrc = {cake.icing[key].imageSrc}
             imageAlt = {key}
             imageParagraf = {cake.icing[key].imageParagraf}
-            imageOnClick = {()=>props.changeIcingHandler(key)}
+            imageOnClick = {()=>props.changeValueHandler('icing', key)}
         />
     ))
     return (

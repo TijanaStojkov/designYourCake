@@ -65,7 +65,7 @@ const Step1 = (props) => {
                             imageClass = {`img-shape ${props.layers===key?'border':''}`}
                             imageSrc = {layers.rectangular[key].imageSrc}
                             imageAlt = {layers.rectangular[key].imageAlt}
-                            imageOnClick= {()=>props.changeLayersHandler(key)}
+                            imageOnClick= {()=>props.changeValueHandler('layers', key)}
                             imageParagraf = {layers.rectangular[key].imageParagraf}
                         />
                         ))}
@@ -80,7 +80,7 @@ const Step1 = (props) => {
                         imageClass = {`img-shape ${props.layers===key?'border':''}`}
                         imageSrc = {layers.round[key].imageSrc}
                         imageAlt = {layers.round[key].imageAlt}
-                        imageOnClick= {()=>props.changeLayersHandler(key)}
+                        imageOnClick= {()=>props.changeValueHandler('layers', key)}
                         imageParagraf = {layers.round[key].imageParagraf}
                     />
                     ))}
