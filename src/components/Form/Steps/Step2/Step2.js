@@ -94,7 +94,7 @@ const step2 = (props) => {
         <div className='Step2'>
             <div className='container'>
                 <div className='row'>
-                    <h5>Coose cake spange</h5>
+                    <h5>Choose cake spange</h5>
                     {spange}
                 </div>
                 <div className='row'>

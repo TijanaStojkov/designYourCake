@@ -18,19 +18,19 @@ const Step1 = (props) => {
                     divSize: 's4',
                     imageSrc: `${IMAGES.rectangular1}`,
                     imageAlt: 'rectangular1',
-                    imageParagraf: '10-12 pepole (40$)'
+                    imageParagraf: '10-15 people (40$)'
                 },
                 'rectangular-two': {
                     divSize: 's4',
                     imageSrc: `${IMAGES.rectangular2}`,
                     imageAlt: 'rectangular2',
-                    imageParagraf: '20-24 pepole (80$)'
+                    imageParagraf: '16-25 people (80$)'
                 },
                 'rectangular-tree': {
                     divSize: 's4',
                     imageSrc: `${IMAGES.rectangular3}`,
                     imageAlt: 'rectangular3',
-                    imageParagraf: '30-38 pepole (125$)'
+                    imageParagraf: '26-30 people (125$)'
                 }
             },
             round: {
@@ -38,19 +38,19 @@ const Step1 = (props) => {
                     divSize: 's4',
                     imageSrc: `${IMAGES.round1}`,
                     imageAlt: 'round1',
-                    imageParagraf: '10-12 pepole (40$)'
+                    imageParagraf: '10-15 people (40$)'
                 },
                 'round-two': {
                     divSize: 's4',
                     imageSrc: `${IMAGES.round2}`,
                     imageAlt: 'round2',
-                    imageParagraf: '20-24 pepole (80$)'
+                    imageParagraf: '16-25 people (80$)'
                 },
                 'round-tree': {
                     divSize: 's4',
                     imageSrc: `${IMAGES.round3}`,
                     imageAlt: 'round3',
-                    imageParagraf: '30-38 pepole (125$)'
+                    imageParagraf: '26-30 people (125$)'
                 }
             }
         }
@@ -89,13 +89,13 @@ const Step1 = (props) => {
         return (
             <div className='Step1'>
                 <div className='container'>
-                    <h5>Coose cake shape</h5>
+                    <h5>Choose cake shape</h5>
                     <div className='row' >
-                        <img className={`img-shape ${props.selected==='rectangular'?'border':''}`} src={IMAGES.rectangular1} alt={'rectangular1'} onClick={(event)=>props.selectedHandler(event,'rectangular')}/>
-                        <img className={`img-shape ${props.selected==='round'?'border':''}`}  src={IMAGES.round1} alt={'round1'} onClick={(event)=>props.selectedHandler(event,'round')}/>
+                        <img className={`img-shape ${props.selected==='rectangular'?'border':''}`} src={IMAGES.rectangular1} alt={'rectangular1'} onClick={()=>props.selectedHandler('selected','rectangular')}/>
+                        <img className={`img-shape ${props.selected==='round'?'border':''}`}  src={IMAGES.round1} alt={'round1'} onClick={()=>props.selectedHandler('selected','round')}/>
                     </div>
                     <div className='row' style={{position:'relative'}}>
-                        <h5>Coose number of layers</h5>
+                        <h5>Choose number of layers</h5>
                         <TransitionGroup >
                             <CSSTransition
                                 key={props.selected}

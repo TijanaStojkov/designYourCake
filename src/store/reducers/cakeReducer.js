@@ -13,6 +13,8 @@ const initState = {
         strawberries: false,
         candles: false,
         fireworks: false,
+        message: 'null',
+        selected:'rectangular'
     },
     totalPrice: 0
 }

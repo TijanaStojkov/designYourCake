@@ -18,7 +18,6 @@ class Form extends Component{
     state = {
         step: 3,
         //Step1
-        selected: 'rectangular',
     }
     addStepHandler = () => {
         this.setState({
@@ -37,9 +36,9 @@ class Form extends Component{
             case 1:
                 return <Step1 
                             key={1} 
-                            selected={this.state.selected} 
+                            selected={this.props.selected} 
                             layers={this.props.layers}
-                            selectedHandler={this.selectedHandler} 
+                            selectedHandler={this.props.changeValueHandler} 
                             changeValueHandler = {this.props.changeValueHandler}/>
             case 2:
                 return <Step2 
@@ -53,6 +52,7 @@ class Form extends Component{
                             key={3}
                             changeValueHandler={this.props.changeValueHandler}
                             customMessage={this.props.customMessage}
+                            message={this.props.message}
                             flowers={this.props.flowers}
                             ediblePearls={this.props.ediblePearls}
                             strawberries={this.props.strawberries}
@@ -98,7 +98,9 @@ const mapStateToProps = state => {
         ediblePearls: state.cakeReducer.cake.ediblePearls,
         strawberries: state.cakeReducer.cake.strawberries,
         candles: state.cakeReducer.cake.candles,
-        fireworks: state.cakeReducer.cake.fireworks
+        fireworks: state.cakeReducer.cake.fireworks,
+        message: state.cakeReducer.cake.message,
+        selected: state.cakeReducer.cake.selected,
     }
 }
 const mapDispatchToProps = dispatch => {
