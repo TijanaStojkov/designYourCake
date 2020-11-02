@@ -31,40 +31,66 @@ const step2 = (props) => {
         },
         icing: {
             'icingBlue': {
-                divSize: 's3',
+                divSize: 's2',
                 imageClass: 'img-icing',
                 imageSrc: `${IMAGES.icingBlue}`,
                 imageParagraf: false,
             },
             'icingRed': {
-                divSize: 's3',
+                divSize: 's2',
                 imageClass: 'img-icing',
                 imageSrc: `${IMAGES.icingRed}`,
                 imageParagraf: false,
             },
             'icingGreen': {
-                divSize: 's3',
+                divSize: 's2',
                 imageClass: 'img-icing',
                 imageSrc: `${IMAGES.icingGreen}`,
                 imageParagraf: false,
             },
             'icingGray': {
-                divSize: 's3',
+                divSize: 's2',
                 imageClass: 'img-icing',
                 imageSrc: `${IMAGES.icingGray}`,
                 imageParagraf: false,
             },
             'icingYellow': {
-                divSize: 's3',
+                divSize: 's2',
                 imageClass: 'img-icing',
                 imageSrc: `${IMAGES.icingYellow}`,
                 imageParagraf: false,
             },
             'icingOrange': {
-                divSize: 's3',
+                divSize: 's2',
                 imageClass: 'img-icing',
                 imageSrc: `${IMAGES.icingOrange}`,
                 imageParagraf: false,
+            },
+        },
+        filling: {
+            'fillingBrown': {
+                divSize: 's3',
+                imageClass: 'img-icing',
+                imageSrc: `${IMAGES.fillingBrown}`,
+                imageParagraf: 'Chocolate',
+            },
+            'fillingPink': {
+                divSize: 's3',
+                imageClass: 'img-icing',
+                imageSrc: `${IMAGES.fillingPink}`,
+                imageParagraf: 'Strawbery',
+            },
+            'fillingWhite': {
+                divSize: 's3',
+                imageClass: 'img-icing',
+                imageSrc: `${IMAGES.fillingWhite}`,
+                imageParagraf: 'Vanilla',
+            },
+            'fillingPurple': {
+                divSize: 's3',
+                imageClass: 'img-icing',
+                imageSrc: `${IMAGES.fillingPurple}`,
+                imageParagraf: 'Berry'
             },
         }
     }
@@ -78,7 +104,7 @@ const step2 = (props) => {
             imageParagraf = {cake.spange[key].imageParagraf}
             imageOnClick = {()=>props.changeValueHandler('spange', key)}
         />
-    ))
+    ));
     const icing = Object.keys(cake.icing).map(key=>(
         <ImageDiv
             key = {key}
@@ -89,7 +115,19 @@ const step2 = (props) => {
             imageParagraf = {cake.icing[key].imageParagraf}
             imageOnClick = {()=>props.changeValueHandler('icing', key)}
         />
-    ))
+    ));
+    const filling = Object.keys(cake.filling).map(key=>(
+        <ImageDiv
+            key = {key}
+            divSize = {cake.filling[key].divSize}
+            imageClass = {`img-icing ${props.filling===key?'border':' '}`}
+            imageSrc = {cake.filling[key].imageSrc}
+            imageAlt = {key}
+            imageParagraf = {cake.filling[key].imageParagraf}
+            imageOnClick = {()=>props.changeValueHandler('filling', key)}
+        />
+    ));
+
     return (
         <div className='Step2'>
             <div className='container'>
@@ -100,6 +138,10 @@ const step2 = (props) => {
                 <div className='row'>
                     <h5>Choose icing color</h5>
                     {icing}
+                </div>
+                <div className='row'>
+                    <h5>Choose filling</h5>
+                    {filling}
                 </div>
             </div>
         </div>

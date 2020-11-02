@@ -7,6 +7,7 @@ const initState = {
         layers: 'rectangular-one',
         spange: 'spangeRed',
         icing: 'icingBlue',
+        filling: 'fillingPink',
         customMessage: false,
         flowers: false,
         ediblePearls: false,

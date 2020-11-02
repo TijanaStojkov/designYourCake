@@ -21,7 +21,11 @@ import icingGreen from '../assets/images/cake-icing/icing-green.png';
 import icingOrange from '../assets/images/cake-icing/icing-orange.png';
 import icingGray from '../assets/images/cake-icing/icing-gray.png';
 
-
+//filling
+import fillingPurple from '../assets/images/cake-filling/filling-purple.png';
+import fillingBrown from '../assets/images/cake-filling/filling-brown.png';
+import fillingPink from '../assets/images/cake-filling/filling-pink.png';
+import fillingWhite from '../assets/images/cake-filling/filling-white.png';
 
 export const IMAGES = {
     round1,
@@ -39,4 +43,8 @@ export const IMAGES = {
     icingGreen,
     icingOrange,
     icingGray,
+    fillingPurple,
+    fillingBrown,
+    fillingPink,
+    fillingWhite,
 }

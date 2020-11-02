@@ -15,30 +15,34 @@ class cake extends React.Component{
 
     render(){
         let numberOfLayers = this.props.layers.split('-')[1];
+        //Spange and filling
         let styleCake = `cake 
             ${this.props.spange==='spangeRed'?' cakeRedSpange':
             this.props.spange==='spangeBrown'?' cakeBrownSpange':
             this.props.spange==='spangeYellow'?' cakeYellowSpange':' '}
             
-            ${this.props.icing==='icingBlue'?' icingBlue':
-            this.props.icing==='icingRed'?' icingRed':
-            this.props.icing==='icingGreen'?' icingGreen':
-            this.props.icing==='icingGray'?' icingGray':
-            this.props.icing==='icingYellow'?' icingYellow':
-            this.props.icing==='icingOrange'?' icingOrange':' '}
-            `
+            ${this.props.filling==='fillingBrown'?' fillingBrown':
+            this.props.filling==='fillingPink'?' fillingPink':
+            this.props.filling==='fillingWhite'?' fillingWhite':
+            this.props.filling==='fillingPurple'?' fillingPurple':' '}
+            `;
+
+        //Icing
+        const icingColor = this.props.icing;
         let bottomIcing = [];
         for(let i=0; i<12; i++){
-            bottomIcing.push(<img className='icingOnCake' src={IMAGES.icingBlue}/>)
+            bottomIcing.push(<img className='icingOnCake' src={IMAGES[icingColor]}/>)
         }
         let middleIcing = [];
         for(let i=0; i<9; i++){
-            middleIcing.push(<img className='icingOnCake' src={IMAGES.icingBlue}/>)
+            middleIcing.push(<img className='icingOnCake' src={IMAGES[icingColor]}/>)
         }
         let topIcing = [];
         for(let i=0; i<5; i++){
-            topIcing.push(<img className='icingOnCake' src={IMAGES.icingBlue}/>)
-        }
+            topIcing.push(<img className='icingOnCake' src={IMAGES[icingColor]}/>)
+        };
+
+        //Layers
         let layers = null;
         if(numberOfLayers ==='one'){
             layers = <section className={styleCake } id="cake--bottom">
@@ -79,15 +83,19 @@ class cake extends React.Component{
                         </div>
                     </section>
                 </div>
-        }
+        };
+
+        //Fireworks
         let redFirework = null;
         if(this.props.fireworks){
             redFirework = <span className="firework"><img src={fireworkRed} alt={'fireworkRed'}/></span>
-        }
+        };
         let blueFirework = null;
         if(this.props.fireworks){
             blueFirework = <span className="firework"><img src={fireworkBlue} alt={'fireworkBlue'}/></span>
-        }
+        };
+
+        //Candles
         let candles = null;
         if(this.props.candles){
             candles = 
@@ -96,11 +104,13 @@ class cake extends React.Component{
                     <span className="candle"><img src={redCandle} alt={'redCandle'}/></span>
                     <span className="candle"><img src={redCandle} alt={'redCandle'}/></span>
                 </div>
-        }
+        };
+
+        //Message
         let message = <div></div>;
         if(this.props.message && this.props.customMessage!==false){
             message = <div className={this.props.selected==='round'?'messageDivRound':'messageDivRectangular'}>{this.props.message}</div>;
-        }
+        };
 
         return(
             <section className="cakeContainer">
@@ -115,6 +125,7 @@ class cake extends React.Component{
                     </div>
                 </section>
                 <CSSTransition
+                unmountOnExit
                         in={this.props.message}
                         appear={true}
                         timeout={300}
@@ -130,6 +141,7 @@ const mapStateToProps = state => {
         layers: state.cakeReducer.cake.layers,
         spange: state.cakeReducer.cake.spange,
         icing: state.cakeReducer.cake.icing,
+        filling: state.cakeReducer.cake.filling,
         candles: state.cakeReducer.cake.candles,
         fireworks: state.cakeReducer.cake.fireworks,
         message: state.cakeReducer.cake.message,

@@ -16,7 +16,7 @@ import * as actions from '../../store/actions/allActions';
 
 class Form extends Component{
     state = {
-        step: 3,
+        step: 2,
         //Step1
     }
     addStepHandler = () => {
