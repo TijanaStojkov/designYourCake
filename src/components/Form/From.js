@@ -104,8 +104,10 @@ class Form extends Component{
         return(
             <Aux >
                 <div className='row'>
-                    <div className='col s1 arrows'>                        
-                        <div style={{margin:'auto'}} onClick={this.removeStepHandler}><span class="material-icons">keyboard_arrow_left</span></div>
+                    <div className='col s1 arrows'>   
+                    {this.state.step!==1 &&
+                      <div style={{margin:'auto'}} onClick={this.removeStepHandler}><span class="left-right-icon">{'<'}</span></div>
+                    }                     
                     </div>
                     <div className='col s10'>
                         <form onSubmit={this.handleSubmitForm} >
@@ -113,8 +115,10 @@ class Form extends Component{
                             {this.currentStep()}
                         </form>
                     </div>
-                    <div className='col s1 arrows'>                        
-                        <div style={{margin:'auto'}} onClick={this.addStepHandler}><span class="material-icons">keyboard_arrow_right</span></div>
+                    <div className='col s1 arrows'>   
+                    {this.state.step!==4 &&
+                        <div style={{margin:'auto'}} onClick={this.addStepHandler}><span class="left-right-icon">{'>'}</span></div>
+                    }                     
                     </div>
                 </div>
             </Aux>

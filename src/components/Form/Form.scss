@@ -7,5 +7,9 @@ form {
     display: flex;
     flex-direction: column;    
     height: 550px;
-    cursor: pointer;
+    .left-right-icon{
+        font-size: 30px;
+        width: 10px;
+        cursor: pointer;
+    }
 }
