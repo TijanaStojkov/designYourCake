@@ -19,7 +19,7 @@ import { Icon } from 'react-materialize';
 
 class Form extends Component{
     state = {
-        step: 3,
+        step: 1,
         progress: ''
         //Step1
     }
