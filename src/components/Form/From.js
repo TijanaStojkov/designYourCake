@@ -105,7 +105,7 @@ class Form extends Component{
             <Aux >
                 <div className='row'>
                     <div className='col s1 arrows'>                        
-                        <div style={{margin:'auto'}} onClick={this.removeStepHandler}><Icon>keyboard_arrow_left</Icon></div>
+                        <div style={{margin:'auto'}} onClick={this.removeStepHandler}><span class="material-icons">keyboard_arrow_left</span></div>
                     </div>
                     <div className='col s10'>
                         <form onSubmit={this.handleSubmitForm} >
@@ -114,7 +114,7 @@ class Form extends Component{
                         </form>
                     </div>
                     <div className='col s1 arrows'>                        
-                        <div style={{margin:'auto'}} onClick={this.addStepHandler}><Icon>keyboard_arrow_right</Icon></div>
+                        <div style={{margin:'auto'}} onClick={this.addStepHandler}><span class="material-icons">keyboard_arrow_right</span></div>
                     </div>
                 </div>
             </Aux>
