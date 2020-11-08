@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "6d68638124ca5c007ff7fbef41069972",
+    "revision": "05de9f2b40ec1c81f8ec10871fd06684",
     "url": "/designYourCake/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/designYourCake/static/css/2.53159467.chunk.css"
   },
   {
-    "revision": "eee87c3db84f5ac37b53",
-    "url": "/designYourCake/static/css/main.6b87e2c4.chunk.css"
+    "revision": "e23d6a00a41868d353ff",
+    "url": "/designYourCake/static/css/main.8fcae393.chunk.css"
   },
   {
     "revision": "4af6774919dc02b1ea41",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/designYourCake/static/js/2.2ab00516.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "eee87c3db84f5ac37b53",
-    "url": "/designYourCake/static/js/main.583feff8.chunk.js"
+    "revision": "e23d6a00a41868d353ff",
+    "url": "/designYourCake/static/js/main.1b795180.chunk.js"
   },
   {
     "revision": "3dfae4cdfed2de072bc4",
