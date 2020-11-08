@@ -6,7 +6,11 @@
 }
 .frame {
     font-family: Arial, sans-serif;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 30px;
     color:#000
+}
+.ordinalframe{
+    display: flex;
+    justify-content: center;
 }

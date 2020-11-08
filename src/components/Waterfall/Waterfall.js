@@ -1,5 +1,6 @@
 import OrdinalFrame from "semiotic/lib/OrdinalFrame"
-import React, { useEffect } from 'react';import './Waterfall.css';
+import React, { useEffect } from 'react';
+import './Waterfall.scss';
 import { useSelector } from 'react-redux';
 import { CAKE_PRICES } from '../../const/cake-prices';
 
@@ -47,21 +48,21 @@ const Graph = () => {
     const frameProps = {   
         data: [
             { name: "Layers", value: layers, idText:1, idLine:11, idRect:111},
-            { name: "Custom Message", value: customMessage, idText:2, idLine:22, idRect:222 },
+            { name: "Message", value: customMessage, idText:2, idLine:22, idRect:222 },
             { name: "Flowers", value: flowers, idText:3, idLine:33, idRect:333 },
-            { name: "Edible Pearls", value: ediblePearls, idText:4, idLine:44, idRect:444 },
+            { name: "Pearls", value: ediblePearls, idText:4, idLine:44, idRect:444 },
             { name: "Strawberries", value: strawberries, idText:5, idLine:55, idRect:555 },
             { name: "Candles", value: candles, idText:6, idLine:66, idRect:666 },
             { name: "Fireworks", value: fireworks, idText:7, idLine:77, idRect:777 },
             { name: "Total price", idText:8, idLine:88, idRect:888 }
             ],
-        size: [900,300],
+        size: [500,200],
         margin: { left: 50, top: 70, bottom: 50, right: 70 },
         type: waterfall,
         oPadding: 32,
         oAccessor: "name",
         rAccessor: "value",
-        rExtent: [0,300],
+        rExtent: [0,200],
         axes: [
             { tickSize:0, 
               orient: "left", 
@@ -70,8 +71,8 @@ const Graph = () => {
         ],
         oLabel: d => {
             const abel = d!='Total price'?
-            <text style={{ fontSize: '12px', lineHeight:'19px', fill:'#000', textAnchor: "middle"}}>{d}</text>:
-            <text style={{ fontWeight:'bold', fontSize: '12px', lineHeight:'19px', fill:'#000', textAnchor: "middle"}}>{d}</text>
+            <text style={{ fontSize: '8px', lineHeight:'19px', fill:'#000', textAnchor: "middle"}}>{d}</text>:
+            <text style={{ fontWeight:'bold', fontSize: '9px', lineHeight:'19px', fill:'#000', textAnchor: "middle"}}>{d}</text>
 
             return abel
         },
@@ -172,7 +173,7 @@ const Graph = () => {
                     key={thisPiece.idText}
                     x={x + width / 2}
                     y={lineY + textOffset}
-                    style={{ fontSize: "14px", lineHeight:"30px", textAnchor: "middle", fill: "#757575" }}
+                    style={{ fontSize: "11px", lineHeight:"30px", textAnchor: "middle", fill: "#757575" }}
                 >
                     {formatLabel(name, value)}
                 </text>

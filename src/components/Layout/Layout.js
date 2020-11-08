@@ -21,7 +21,7 @@ const layout = () => {
           </div>
         </div>
         <div className="row" style={{display:'flex', justifyContent: 'center'}}>
-          <Waterfall />
+          {/*<Waterfall />*/}
         </div>
       <Footer/>
     </Aux>

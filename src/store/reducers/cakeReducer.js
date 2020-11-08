@@ -5,33 +5,30 @@ import { CAKE_PRICES } from '../../const/cake-prices'
 const initState = {
     cake: {
         layers: 'rectangular-one',
-        spange: 'spangeRed',
-        icing: 'icingBlue',
-        filling: 'fillingPink',
+        selected:'rectangular',
+        spange: '',
+        icing: '',
+        filling: '',
+        selectedDecoration: '',
+        frosting: 'chocolate',
+        noDecoration: false,
         customMessage: false,
         flowers: false,
         ediblePearls: false,
         strawberries: false,
         candles: false,
         fireworks: false,
-        message: 'null',
-        selected:'rectangular'
+        message: '',
+        progress: 0,
     },
     totalPrice: 0
 }
-
 const cakeReducer = (state=initState, actions) => {
     switch(actions.type){
         case actionTypes.CHANGE_VALUE_HANDLER:
+            console.log(actions.name, actions.value)
             const layerPrice = CAKE_PRICES[state.cake.layers];
             let customMessagePrice = 0;
-
-            let cake = {...state.cake}
-            for (var key in cake){
-                if(state.cake[actions.name]===true){
-                    console.log(key)
-                }
-            }
             if(state.cake.customMessage===true){
                 customMessagePrice = CAKE_PRICES[actions.name];
             }else{
@@ -39,7 +36,25 @@ const cakeReducer = (state=initState, actions) => {
             }
             const totalPrice = layerPrice + customMessagePrice
             return updateObject(state, {cake: updateObject(state.cake, {[actions.name]: actions.value}), totalPrice: totalPrice})
-        default:
+
+        case actionTypes.CHANGE_NO_DECORATION_HANDLER:
+                if(actions.value===true){
+                    return updateObject(state, {cake: updateObject(state.cake, 
+                    {   [actions.name]: actions.value,
+                        customMessage: false,
+                        flowers: false,
+                        ediblePearls: false,
+                        strawberries: false,
+                        candles: false,
+                        fireworks: false,
+                        message: '' }
+                        )})
+                }else{
+                    return updateObject(state, {cake: updateObject(state.cake, 
+                        { [actions.name]: actions.value }
+                    )})   
+                }        
+            default:
             return state
     }
 }

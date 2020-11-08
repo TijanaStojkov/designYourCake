@@ -7,3 +7,10 @@ export const changeValueHandler = (name, value) => {
         value
     }
 }
+export const changeNoDecorationHandler = (name, value) => {
+    return{
+        type: actionTypes.CHANGE_NO_DECORATION_HANDLER,
+        name,
+        value
+    }
+}

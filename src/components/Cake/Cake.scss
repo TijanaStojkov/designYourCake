@@ -3,7 +3,6 @@
 #NavBar.container {
     width: 100%;
 }
-
 section {
     display: block;
     #cake {
@@ -17,12 +16,19 @@ section {
         align-items: flex-end;
         .cakePosition{
             flex-direction: column;
-
+            .cake.chocolateFrosting {
+                border: 10px solid $main-color;
+            }
+            .cake.whippedCreamFrosting {
+                border: 10px solid #DED9AB;
+            }
+            .cake.noFrosting {
+                border: 10px double #43050547;
+            }
             .cake {
                 border-radius: 10px 10px 0px 0px;
                 margin: 0 auto 0 auto;
                 background-size: 50px 30px;
-                border: 10px solid $main-color;
                 box-shadow: 0 2px 10px black;
                 .icingDiv{
                     position: relative;
@@ -66,8 +72,7 @@ section {
                 content: '';
                 position: relative;
                 display: inline-block;
-                left: -9.5px;
-                width: inherit;
+                width: -moz-available;
                 height: 15px;
                 background-size: 50px 60px;
                 background-image: 
@@ -75,62 +80,37 @@ section {
                     radial-gradient(circle at 25px 20px, rgba(0, 0, 0, 0.3) 30px, transparent 0px);
                 background-repeat: repeat;
             }
-            
             #cake--bottom {
                 height: 90px;
                 width: 249px;
-            }
-            
+            } 
             #cake--middle {
                 width: 187px;
                 height: 63px;
                 border-bottom: none;
-            }
-            
+            }  
             #cake--top {
                 width: 109px;
                 height: 48px;
                 border-bottom: none;
-            }
-            
+            }           
             .candles-top {
                 display: flex;
                 justify-content: center;
                 align-items: baseline;
-            }
-            
+            }         
             .candle {
                 img{
-                    height: 60px
+                    height: 60px;
                 }
             }
             .firework {
                 img{
-                    height: 100px
+                    height: 100px;
                 }
             }   
         }          
-        }
-        
-}
-.cakeContainer {
-    .messageDivRound{
-        border: 1px solid #430505;
-        padding: 26px 16px;
-        border-radius: 50%;
-        width: 150px;
-        height: 150px;
-        margin: 30px auto 30px auto;
-        text-align: center;
-    }
-    .messageDivRectangular{
-        border: 1px solid #430505;
-        padding: 5px 10px;
-        width: 150px;
-        height: 100px;
-        margin: 30px auto 30px auto;
-        text-align: center;
-    }
+    }        
 }
 
 

@@ -14,9 +14,13 @@ import { Button } from 'react-materialize';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/allActions';
 
+//materialize
+import { Icon } from 'react-materialize';
+
 class Form extends Component{
     state = {
-        step: 2,
+        step: 3,
+        progress: ''
         //Step1
     }
     addStepHandler = () => {
@@ -31,6 +35,7 @@ class Form extends Component{
             }) 
         }
     }
+    
     currentStep(){
         switch(this.state.step){
             case 1:
@@ -46,11 +51,14 @@ class Form extends Component{
                             spange={this.props.spange}
                             changeSpangeHandler={this.props.changeSpangeHandler}
                             changeValueHandler={this.props.changeValueHandler}
+                            icing={this.props.icing}
+                            filling={this.props.filling}
                             />
             case 3:
                 return <Step3 
                             key={3}
                             changeValueHandler={this.props.changeValueHandler}
+                            changeNoDecorationHandler={this.props.changeNoDecorationHandler}
                             customMessage={this.props.customMessage}
                             message={this.props.message}
                             flowers={this.props.flowers}
@@ -58,6 +66,9 @@ class Form extends Component{
                             strawberries={this.props.strawberries}
                             candles={this.props.candles}
                             fireworks={this.props.fireworks}
+                            noDecoration={this.props.noDecoration}
+                            frosting={this.props.frosting}
+                            selected={this.props.selected}
                             />
             case 4:
                 return <Summary/>
@@ -74,15 +85,37 @@ class Form extends Component{
         })
      }
     render() {
+        let selectedDecoration='';
+        if(this.props.noDecoration===false && this.props.customMessage===false && this.props.flowers===false && this.props.ediblePearls===false && this.props.strawberries===false && this.props.candles===false && this.props.fireworks===false){
+            selectedDecoration = ''
+        }else{
+            selectedDecoration = 'true'
+        }
+        let processArray = [this.props.layers, this.props.selected, this.props.spange, this.props.icing ,this.props.filling, selectedDecoration, this.props.frosting];
+        let process = 0;
+
+        processArray.forEach(step =>{
+            console.log(step)
+            if(step!==''){
+                process=process+1 
+            }
+        })
+        console.log(process)
         return(
             <Aux >
-                <form onSubmit={this.handleSubmitForm} >
-                    <ProgressBar step={this.state.step}/>
-                    {this.currentStep()}
-                </form>
                 <div className='row'>
-                    <Button className='brown darken-4 btn-prev' onClick={this.removeStepHandler}>Previous</Button>
-                    <Button className='brown darken-4 btn-next' onClick={this.addStepHandler} >Next</Button>
+                    <div className='col s1 arrows'>                        
+                        <div style={{margin:'auto'}} onClick={this.removeStepHandler}><Icon>keyboard_arrow_left</Icon></div>
+                    </div>
+                    <div className='col s10'>
+                        <form onSubmit={this.handleSubmitForm} >
+                            <ProgressBar progress={process}/>
+                            {this.currentStep()}
+                        </form>
+                    </div>
+                    <div className='col s1 arrows'>                        
+                        <div style={{margin:'auto'}} onClick={this.addStepHandler}><Icon>keyboard_arrow_right</Icon></div>
+                    </div>
                 </div>
             </Aux>
         )
@@ -93,6 +126,7 @@ const mapStateToProps = state => {
         layers: state.cakeReducer.cake.layers,
         spange: state.cakeReducer.cake.spange,
         icing: state.cakeReducer.cake.icing,
+        filling: state.cakeReducer.cake.filling,
         customMessage: state.cakeReducer.cake.customMessage,
         flowers: state.cakeReducer.cake.flowers,
         ediblePearls: state.cakeReducer.cake.ediblePearls,
@@ -101,11 +135,16 @@ const mapStateToProps = state => {
         fireworks: state.cakeReducer.cake.fireworks,
         message: state.cakeReducer.cake.message,
         selected: state.cakeReducer.cake.selected,
+        noDecoration: state.cakeReducer.cake.noDecoration,
+        progress: state.cakeReducer.cake.progress,
+        frosting: state.cakeReducer.cake.frosting,
+        spange: state.cakeReducer.cake.spange,
     }
 }
 const mapDispatchToProps = dispatch => {
     return {
         changeValueHandler: (name, value) => dispatch (actions.changeValueHandler(name, value)),
+        changeNoDecorationHandler: (name, value) => dispatch (actions.changeNoDecorationHandler(name, value))
     }
 }    
 export default connect(mapStateToProps,mapDispatchToProps)(Form);

@@ -1,0 +1,31 @@
+.Step3 {
+    [type="radio"] + span::before{
+        left: 11px
+    }
+    [type="radio"] + span::after{
+        left: 5px
+    }
+    .messageDivRound{
+        padding: 26px 16px;
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        margin: 5px auto 5px auto;
+        text-align: center;
+    }
+    .messageDivRectangular{
+        padding: 5px 10px;
+        width: 150px;
+        height: 100px;
+        margin: 5px auto 5px auto;
+        text-align: center;
+    }
+    .checkedboxDisabled {
+        label{
+            color: #cdcaca;
+        }
+        [type="checkbox"]:not(:checked):disabled + span:not(.lever)::before {
+            background-color: #cdcaca;
+        }
+    }
+}

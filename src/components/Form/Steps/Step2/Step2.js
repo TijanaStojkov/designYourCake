@@ -109,7 +109,7 @@ const step2 = (props) => {
         <ImageDiv
             key = {key}
             divSize = {cake.icing[key].divSize}
-            imageClass = {`img-icing ${props.spange===key?'border':' '}`}
+            imageClass = {`img-icing-filling ${props.icing===key?'border':' '}`}
             imageSrc = {cake.icing[key].imageSrc}
             imageAlt = {key}
             imageParagraf = {cake.icing[key].imageParagraf}
@@ -120,7 +120,7 @@ const step2 = (props) => {
         <ImageDiv
             key = {key}
             divSize = {cake.filling[key].divSize}
-            imageClass = {`img-icing ${props.filling===key?'border':' '}`}
+            imageClass = {`img-icing-filling ${props.filling===key?'border':' '}`}
             imageSrc = {cake.filling[key].imageSrc}
             imageAlt = {key}
             imageParagraf = {cake.filling[key].imageParagraf}

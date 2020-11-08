@@ -7,9 +7,14 @@ import { IMAGES } from '../../const/images'
 
 //redux
 import { connect } from 'react-redux';
+import * as actions from '../../store/actions/allActions';
 
+//transition
 import { CSSTransition } from 'react-transition-group';
 import '../../assets/scss/transition.scss';
+
+//components
+import Waterfall from '../Waterfall/Waterfall'
 
 class cake extends React.Component{
 
@@ -17,6 +22,9 @@ class cake extends React.Component{
         let numberOfLayers = this.props.layers.split('-')[1];
         //Spange and filling
         let styleCake = `cake 
+            ${this.props.frosting==='whippedCream'? 'whippedCreamFrosting':
+            this.props.frosting==='chocolate'? 'chocolateFrosting':'noFrosting'} 
+
             ${this.props.spange==='spangeRed'?' cakeRedSpange':
             this.props.spange==='spangeBrown'?' cakeBrownSpange':
             this.props.spange==='spangeYellow'?' cakeYellowSpange':' '}
@@ -106,12 +114,6 @@ class cake extends React.Component{
                 </div>
         };
 
-        //Message
-        let message = <div></div>;
-        if(this.props.message && this.props.customMessage!==false){
-            message = <div className={this.props.selected==='round'?'messageDivRound':'messageDivRectangular'}>{this.props.message}</div>;
-        };
-
         return(
             <section className="cakeContainer">
                 <section id="cake">
@@ -124,14 +126,7 @@ class cake extends React.Component{
                         {layers}
                     </div>
                 </section>
-                <CSSTransition
-                unmountOnExit
-                        in={this.props.message}
-                        appear={true}
-                        timeout={300}
-                        classNames="fade"
-                        >{message}
-                </CSSTransition>
+                <Waterfall/>
             </section>
         )
     }
@@ -147,6 +142,12 @@ const mapStateToProps = state => {
         message: state.cakeReducer.cake.message,
         customMessage: state.cakeReducer.cake.customMessage,
         selected: state.cakeReducer.cake.selected,
+        frosting: state.cakeReducer.cake.frosting,
     }
 }
-export default connect(mapStateToProps)(cake);
+const mapDispatchToState = dispatch => {
+    return{
+        changeValueHandler: (name, value) => dispatch(actions.changeValueHandler(name, value))
+    }
+}
+export default connect(mapStateToProps, mapDispatchToState)(cake);
