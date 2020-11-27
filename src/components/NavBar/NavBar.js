@@ -8,7 +8,10 @@ import Aux from '../../hoc/Auxilary/Auxilary';
 import { Navbar, Icon, NavItem } from 'react-materialize';
 
 //image
-import logoCake from '../../assets/images/cake.png'
+import logoCake from '../../assets/images/cake.png';
+
+//router
+import {NavLink} from 'react-router-dom';
 
 const navbar = () => {
   return (
@@ -30,15 +33,15 @@ const navbar = () => {
             onOpenStart: null,
             outDuration: 200,
             preventScrolling: true
-  }}
->
-  <NavItem href="">
-    Your cake
-  </NavItem>
-  <NavItem href="components.html">
-    Login
-  </NavItem>
-</Navbar>
+          }}
+        >
+          <NavLink to="/yourCake">
+            Your cake
+          </NavLink>
+          <NavLink to='/login'>
+            Login
+          </NavLink>
+        </Navbar>
     </Aux>
   );
 }

@@ -1,0 +1,16 @@
+@import '../../../assets//scss//variables.scss';
+
+#login {
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    text-align: center;
+    margin: 70px auto 90px auto;
+    .input-field{
+        width: 350px;
+    }
+    a {
+        margin: 10px;
+        color: $main-color
+    }
+}

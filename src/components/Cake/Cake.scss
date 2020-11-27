@@ -1,5 +1,6 @@
-
 @import '../../assets/scss/variables.scss';
+@import '../../assets/scss/mixins.scss';
+
 #NavBar.container {
     width: 100%;
 }
@@ -42,19 +43,13 @@ section {
                 }
             }
             .cakeRedSpange {
-                background-image: 
-                    linear-gradient(transparent 40%, #E94A47 40%),
-                    linear-gradient(transparent 35%, #542F04 35%)
+                @include background-image(#E94A47,#542F04)    
             } 
             .cakeBrownSpange {
-                background-image: 
-                    linear-gradient(transparent 40%, #542F04 40%),
-                    linear-gradient(transparent 35%, #542F04 35%)
+                @include background-image(#542F04,#542F04)
             } 
             .cakeYellowSpange {
-                background-image: 
-                    linear-gradient(transparent 40%, #FFD100 40%),
-                    linear-gradient(transparent 35%, #542F04  35%)
+                @include background-image(#FFD100,#542F04)
             } 
             .fillingBrown {
                 background-color: #936348;

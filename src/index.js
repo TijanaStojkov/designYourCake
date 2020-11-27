@@ -8,11 +8,13 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import cakeReducer from './store/reducers/cakeReducer';
+import authReducer from './store/reducers/authReducer';
 import thunk from 'redux-thunk';
 
 
 const rootReducer = combineReducers({
-  cakeReducer: cakeReducer
+  cakeReducer: cakeReducer,
+  authReducer: authReducer
 })
 const logger = store => {
   return next => {

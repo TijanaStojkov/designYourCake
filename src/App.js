@@ -6,14 +6,16 @@ import 'materialize-css'; // It installs the JS asset only
 import 'materialize-css/dist/css/materialize.min.css';
 
 //components
-import Aux from './hoc/Auxilary/Auxilary';
 import Layout from '../src/components/Layout/Layout';
+
+//routing
+import { BrowserRouter } from 'react-router-dom';
 
 const app = () => {
   return (
-    <Aux>
+    <BrowserRouter basename='/designYourCake/'>
       <Layout/>
-    </Aux>
+    </BrowserRouter >
   );
 }
 
